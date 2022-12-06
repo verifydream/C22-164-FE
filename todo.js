@@ -36,7 +36,7 @@ function checkLocalItem() {
 // Set todos from LocalStorage to Backend
 function setTodos(localTodo) {
   fetch(
-    `https://c22-164-be.vercel.app/set-todo`,
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/set-todo`,
     {
       method: "POST",
       headers: {
@@ -68,7 +68,7 @@ function showNotification(title, message) {
 // Function to Get All Todo List
 function getAllTodoList() {
   fetch(
-    `https://c22-164-be.vercel.app/list?filter=All`
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -222,7 +222,7 @@ function btnAddClick() {
   }
 
   fetch(
-    "https://c22-164-be.vercel.app/list",
+    "https://c22-164-pc4iweok0-verifydream.vercel.app/list",
     {
       method: "POST",
       headers: {
@@ -245,7 +245,7 @@ function btnAddClick() {
 // Function to Complete Todo
 function btnCompleteClick(id) {
   fetch(
-    `https://c22-164-be.vercel.app/list/${id}`,
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list/${id}`,
     {
       method: "PUT",
       headers: {
@@ -261,7 +261,7 @@ function btnCompleteClick(id) {
 // Function to Delete Todo by ID
 function btnDeleteClick(id) {
   fetch(
-    `https://c22-164-be.vercel.app/list/${id}`,
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -277,7 +277,7 @@ function btnDeleteClick(id) {
 // Function to Retrieve Todo Detail
 function btnEditClick(id) {
   fetch(
-    `https://c22-164-be.vercel.app/list/${id}`
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list/${id}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -290,7 +290,7 @@ function btnEditClick(id) {
 // Function to Update Todo By ID
 function updateTodo() {
   fetch(
-    `https://c22-164-be.vercel.app/list/${editId.value}`,
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list/${editId.value}`,
     {
       method: "POST",
       headers: {
@@ -332,7 +332,7 @@ function filterChange() {
 // Function to Check if a Todo is Missed or Will Start Soon
 function reminder() {
   fetch(
-    `https://c22-164-be.vercel.app/list?filter=Pending`
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=Pending`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -370,7 +370,7 @@ function reminder() {
             showNotification("Task Missed", `You Missed Task ${value.title}`);
 
             fetch(
-              `https://c22-164-be.vercel.app/notif/${value.id}`,
+              `https://c22-164-pc4iweok0-verifydream.vercel.app/notif/${value.id}`,
               {
                 method: "PUT",
                 headers: {
@@ -386,7 +386,7 @@ function reminder() {
 
   setInterval(function () {
     fetch(
-      `https://c22-164-be.vercel.app/list?filter=Pending`
+      `https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=Pending`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -424,7 +424,7 @@ function reminder() {
               showNotification("Task Missed", `You Missed Task ${value.title}`);
 
               fetch(
-                `https://c22-164-be.vercel.app/notif/${value.id}`,
+                `https://c22-164-pc4iweok0-verifydream.vercel.app/notif/${value.id}`,
                 {
                   method: "PUT",
                   headers: {

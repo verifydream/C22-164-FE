@@ -7,7 +7,7 @@ getRecap();
 
 // Get Detail of Recap Data
 function getRecap() {
-  fetch(`https://c22-164-be.vercel.app/recap`)
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/recap`)
     .then((response) => response.json())
     .then((data) => displayRecap(data));
 }
@@ -218,7 +218,7 @@ function getMonthName(monthNumber) {
 async function getTips(status, compliance) {
   var tips = "";
 
-  const res = await fetch("https://c22-164-be.vercel.app/tips", {
+  const res = await fetch("https://c22-164-pc4iweok0-verifydream.vercel.app/tips", {
     method: "POST",
     headers: {
       accept: "*/*",

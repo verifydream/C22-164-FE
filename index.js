@@ -17,7 +17,7 @@ function checkLocalItem() {
 
 // Set Todos in Backend
 function setTodos(localTodo) {
-  fetch(`https://c22-164-be.vercel.app/set-todo`, {
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/set-todo`, {
     method: "POST",
     headers: {
       accept: "*/*",
@@ -46,11 +46,11 @@ function showNotification(title, message) {
 
 // Get List of Todo that Has Start Date Today
 function getTodayList() {
-  fetch(`https://c22-164-be.vercel.app/today`)
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/today`)
     .then((response) => response.json())
     .then((data) => displayTodos(data));
 
-  fetch(`https://c22-164-be.vercel.app/list?filter=All`)
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`)
     .then((response) => response.json())
     .then((data) => localStorage.setItem("todos", JSON.stringify(data)));
 
@@ -59,7 +59,7 @@ function getTodayList() {
 
 // Get This Week Recap
 function getThisWeekRecap() {
-  fetch(`https://c22-164-be.vercel.app/this-week-recap`)
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/this-week-recap`)
     .then((response) => response.json())
     .then((data) => displayThisWeekProgress(data));
 }
@@ -161,7 +161,7 @@ function displayTodos(data) {
 
 // Delete Todo by ID
 function btnDeleteClick(id) {
-  fetch(`https://c22-164-be.vercel.app/list/${id}`, {
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list/${id}`, {
     method: "DELETE",
     headers: {
       accept: "*/*",
@@ -174,7 +174,7 @@ function btnDeleteClick(id) {
 
 // Change Todo Status to Complete
 function btnCompleteClick(id) {
-  fetch(`https://c22-164-be.vercel.app/list/${id}`, {
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list/${id}`, {
     method: "PUT",
     headers: {
       accept: "*/*",
@@ -187,7 +187,7 @@ function btnCompleteClick(id) {
 
 // Setup Interval to Check if a Todo is Missed or Will Soon Start
 function reminder() {
-  fetch(`https://c22-164-be.vercel.app/list?filter=Pending`)
+  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=Pending`)
     .then((response) => response.json())
     .then((data) => {
       const today = new Date();
@@ -223,7 +223,7 @@ function reminder() {
           ) {
             showNotification("Task Missed", `You Missed Task ${value.title}`);
 
-            fetch(`https://c22-164-be.vercel.app/notif/${value.id}`, {
+            fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/notif/${value.id}`, {
               method: "PUT",
               headers: {
                 accept: "*/*",
@@ -236,7 +236,7 @@ function reminder() {
     });
 
   setInterval(function () {
-    fetch(`https://c22-164-be.vercel.app/list?filter=Pending`)
+    fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=Pending`)
       .then((response) => response.json())
       .then((data) => {
         const today = new Date();
@@ -272,7 +272,7 @@ function reminder() {
             ) {
               showNotification("Task Missed", `You Missed Task ${value.title}`);
 
-              fetch(`https://c22-164-be.vercel.app/notif/${value.id}`, {
+              fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/notif/${value.id}`, {
                 method: "PUT",
                 headers: {
                   accept: "*/*",
