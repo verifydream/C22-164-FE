@@ -68,7 +68,7 @@ function showNotification(title, message) {
 // Function to Get All Todo List
 function getAllTodoList() {
   fetch(
-    `https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`
+    `https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`, {cache: "no-store"}
   )
     .then((response) => response.json())
     .then((data) => {

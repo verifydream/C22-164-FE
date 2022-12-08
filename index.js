@@ -50,7 +50,7 @@ function getTodayList() {
     .then((response) => response.json())
     .then((data) => {
       displayTodos(data);
-      fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`)
+      fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`, {cache: "no-store"})
         .then((response) => response.json())
         .then((data) => {
           localStorage.setItem("todos", JSON.stringify(data));
