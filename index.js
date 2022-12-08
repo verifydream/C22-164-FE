@@ -11,8 +11,6 @@ function checkLocalItem() {
     // Set Todos to Backend
     setTodos(localTodos);
   }
-
-  getTodayList();
 }
 
 // Set Todos in Backend
@@ -26,6 +24,8 @@ function setTodos(localTodo) {
     body: JSON.stringify({
       localTodo: localTodo,
     }),
+  }).then((response) => {
+    getTodayList();
   });
 }
 
@@ -48,13 +48,15 @@ function showNotification(title, message) {
 function getTodayList() {
   fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/today`)
     .then((response) => response.json())
-    .then((data) => displayTodos(data));
-
-  fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`)
-    .then((response) => response.json())
-    .then((data) => localStorage.setItem("todos", JSON.stringify(data)));
-
-  getThisWeekRecap();
+    .then((data) => {
+      displayTodos(data);
+      fetch(`https://c22-164-pc4iweok0-verifydream.vercel.app/list?filter=All`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem("todos", JSON.stringify(data));
+          getThisWeekRecap();
+        });
+    });
 }
 
 // Get This Week Recap
@@ -167,9 +169,9 @@ function btnDeleteClick(id) {
       accept: "*/*",
       "content-type": "application/json",
     },
+  }).then((response) => {
+    getTodayList();
   });
-
-  getTodayList();
 }
 
 // Change Todo Status to Complete
@@ -180,9 +182,9 @@ function btnCompleteClick(id) {
       accept: "*/*",
       "content-type": "application/json",
     },
+  }).then((response) => {
+    getTodayList();
   });
-
-  getTodayList();
 }
 
 // Setup Interval to Check if a Todo is Missed or Will Soon Start
